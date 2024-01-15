@@ -31,7 +31,7 @@
 			type: "website",
 			name: "FS Winf",
 			description:
-				"Soon to be finished modernization of the TUW business informatics student union website.",
+				"Soon to be finished modernization of the TUW business informatics student union website, winf.at.",
 			show: true,
 			url: "https://fswinf-at.vercel.app/en",
 			icon: "/fswinf_favicon.png",
@@ -120,7 +120,7 @@
 				class=" w-[min(100%,_55rem)] m-auto h-full flex flex-col gap-12"
 			>
 				<div
-					in:fade={{ duration: 1800, delay: 600 }}
+					in:fade={{ duration: 1200, delay: 600 }}
 					class="flex flex-col md:flex-row items-center text-center mt-32 md:mt-40 md:text-left gap-12"
 				>
 					<img
@@ -279,7 +279,12 @@
 													href={project.url}
 													class="hover:text-fuchsia-500 underline italic font-bold decoration-fuchsia-500 underline-offset-4"
 												>
-													check it out
+													<span class="flex gap-1 items-center">
+														check it out <Icon
+															class="mt-1 text-sm"
+															icon="mdi:open-in-new"
+														></Icon>
+													</span>
 												</a>
 											{/if}
 										</div>
