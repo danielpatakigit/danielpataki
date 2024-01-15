@@ -4,12 +4,10 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-dependencies:
-  iconify-icon:
-    specifier: ^1.0.8
-    version: 1.0.8
-
 devDependencies:
+  '@iconify/svelte':
+    specifier: ^3.1.6
+    version: 3.1.6(svelte@5.0.0-next.9)
   '@sveltejs/adapter-auto':
     specifier: ^2.0.0
     version: 2.1.1(@sveltejs/kit@1.27.6)
@@ -271,9 +269,18 @@ packages:
     engines: {node: '>=14'}
     dev: true
 
+  /@iconify/svelte@3.1.6(svelte@5.0.0-next.9):
+    resolution: {integrity: sha512-yLSrlkOx5J6xXU5GDLPBV/MdVBVEZhd36onfqSbxQobp1XBoWQbMPLNZyCAmTKCPnmzXSowGy79agl8FQ3kj6A==}
+    peerDependencies:
+      svelte: '*'
+    dependencies:
+      '@iconify/types': 2.0.0
+      svelte: 5.0.0-next.9
+    dev: true
+
   /@iconify/types@2.0.0:
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
-    dev: false
+    dev: true
 
   /@jridgewell/gen-mapping@0.3.3:
     resolution: {integrity: sha512-HLhSWOLRi875zjjMG/r+Nv0oCW8umGb0BgEhyX3dDX3egwZtB8PqLnjz3yedt8R5StBrzcg4aBpnh8UA9D1BoQ==}
@@ -751,12 +758,6 @@ packages:
     dependencies:
       function-bind: 1.1.2
     dev: true
-
-  /iconify-icon@1.0.8:
-    resolution: {integrity: sha512-jvbUKHXf8EnGGArmhlP2IG8VqQLFFyTvTqb9LVL2TKTh7/eCCD1o2HHE9thpbJJb6B8hzhcFb6rOKhvo7reNKA==}
-    dependencies:
-      '@iconify/types': 2.0.0
-    dev: false
 
   /import-fresh@3.3.0:
     resolution: {integrity: sha512-veYYhQa+D1QBKznvhUHxb8faxlrwUnxseDAbAp457E0wLNio2bOSKnjYDhMj+YiAq61xrMGhQk9iXVk5FzgQMw==}
