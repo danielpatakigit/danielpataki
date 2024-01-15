@@ -1,14 +1,14 @@
 <script lang="ts">
 	import Icon from "@iconify/svelte";
 	import Resume from "$lib/documents/Dániel Pataki - Resume.pdf";
-	import { fade, fly } from "svelte/transition";
+	import { blur, fade, fly } from "svelte/transition";
 	import { onMount } from "svelte";
 	let projects: any = [
 		{
 			type: "website",
 			name: "Naspolya Photography",
 			description:
-				"Photographer portfolio website made for a relative. Sveltekit as frontend, Planetscale free tier as backend.",
+				"Photographer portfolio website made for a relative. Sveltekit as frontend, Planetscale as storage for the dynamic gallery section.",
 			show: true,
 			url: "https://www.naspolyaphoto.hu",
 			icon: "/naspolya_favicon.png",
@@ -17,9 +17,9 @@
 		},
 		{
 			type: "website",
-			name: "Enrol Consulting Website",
+			name: "Enrol Website",
 			description:
-				"Company website design and implementation for a relative's IT firm. Soon to be ported over to Svelte by me.",
+				"Company website design and implementation for a small Hungarian IT firm with vanilla technologies. Soon to be ported over to Svelte.",
 			show: true,
 			url: "https://www.enrol.hu",
 			icon: "/enrol_favicon.png",
@@ -43,14 +43,14 @@
 			type: "design",
 			name: "Microkit Logo",
 			description:
-				"Company logo designed for Microkit, a small business dealing in veterniary products.",
+				"Logo designed for Microkit, a small business dealing in veterniary products.",
 			show: false,
 			url: "",
 			icon: "",
 
 			img: [
 				"microkit_businesscard_mockup.jpg",
-				"microkit_logo.png",
+
 				"microkit_logo_blue.png",
 			],
 			column: 3,
@@ -82,12 +82,12 @@
 		{
 			type: "design",
 			name: "Enrol Logo",
-			description: "Company logo designed for Enrol.",
+			description: "Logo designed for Enrol.",
 			show: false,
 			url: "",
 			icon: "/enrol_favicon.png",
 
-			img: ["enrol logo 1.png", "enrol logo 2.png"],
+			img: ["enrol logo 1.png"],
 			column: 1,
 		},
 		// {
@@ -114,49 +114,52 @@
 	id="page-wrapper"
 	class="  flex justify-center items-center gradient bg-zinc-950 text-white"
 >
-	<div class="h-full w-full grain p-4">
-		<div
-			class=" w-[min(100%,_55rem)] m-auto h-full flex flex-col gap-12"
-		>
-			<div class="flex flex-row mt-64 gap-12">
-				<img
-					class="w-80 rounded-full h-full"
-					src="/danielpataki.jpg"
-					alt="Daniel Pataki"
-				/>
-				<div class="flex flex-col my-auto">
-					<span class="italic font-light text-xl">
-						Hello
-						<span class="text-fuchsia-500">!</span>
-					</span>
-					<h1
-						class="font-bold text-6xl mt-4 decoration-fuchsia-500 underline underline-offset-8"
-					>
-						Dániel Pataki
-					</h1>
-					<ul class=" mt-8 gap-2 flex flex-col italic">
-						<li>
-							<span class="text-fuchsia-500 font-bold">-</span>
-							Maturing full-stack developer
-						</li>
-						<li>
-							<span class="text-fuchsia-500 font-bold">-</span>
-							Enrolled in TU Wien business informatics
-						</li>
-					</ul>
+	{#if ready}
+		<div class="h-full w-full grain p-4">
+			<div
+				class=" w-[min(100%,_55rem)] m-auto h-full flex flex-col gap-12"
+			>
+				<div
+					in:fade={{ duration: 1800, delay: 600 }}
+					class="flex flex-col md:flex-row items-center text-center mt-32 md:mt-40 md:text-left gap-12"
+				>
+					<img
+						class="w-80 rounded-full h-full"
+						src="/danielpataki.jpg"
+						alt="Daniel Pataki"
+					/>
+					<div class="flex flex-col my-auto">
+						<span class="italic font-light text-xl">
+							Hello
+							<span class="text-fuchsia-500">!</span>
+						</span>
+						<h1
+							class="font-bold text-6xl mt-4 decoration-fuchsia-500 underline underline-offset-8"
+						>
+							Dániel Pataki
+						</h1>
+						<ul class=" mt-8 gap-2 flex flex-col italic">
+							<li>
+								<span class="text-fuchsia-500 font-bold">-</span>
+								Maturing full-stack developer
+							</li>
+							<li>
+								<span class="text-fuchsia-500 font-bold">-</span>
+								Enrolled in TU Wien business informatics
+							</li>
+						</ul>
+					</div>
 				</div>
-			</div>
 
-			{#if ready}
 				<div
 					in:fly={{
-						delay: 500,
-						duration: 2000,
+						delay: 150,
+						duration: 1500,
 						x: 0,
 						y: 50,
 						opacity: 0,
 					}}
-					class=" w-full rounded-full p-4 flex justify-center gap-6 bg-zinc-900 mt-4"
+					class=" w-max mx-auto rounded-full p-4 flex flex-wrap justify-center gap-6 md:bg-zinc-900 mt-4"
 					style="background-color: 0"
 				>
 					<a
@@ -193,85 +196,112 @@
 						<span class="font-semibold">LinkedIn</span>
 					</a>
 				</div>
-			{/if}
-			<h2 class="font-bold mx-auto text-3xl">
-				Check out my work
-				<span class="text-fuchsia-500">!</span>
-			</h2>
-			<div
-				class="h-full w-full p-4 rounded-3xl gap-4 grid grid-cols-3 bg-zinc-900"
-			>
-				{#each Array(3) as _, i}
-					<div class="flex flex-col gap-4">
-						{#each projects as project, j}
-							{#if project.column - 1 === i}
-								<article
-									class="bg-zinc-950 p-4 rounded-2xl flex flex-col gap-3"
-								>
-									{#if project.img.length >= 1}
-										<div class="flex flex-col gap-4">
-											{#each project.img as src, k}
-												<img
-													class="bg-white rounded-lg p-2"
-													src="/{src}"
-													alt="{project.title} illustration"
-												/>
-											{/each}
-										</div>
-									{/if}
-
-									<div class="flex items-center gap-4">
-										<div
-											class="aspect-square h-12 bg-zinc-900 rounded-lg flex justify-center text-center items-center"
-										>
-											{#if project.icon}
-												{#if project.icon.charAt(0) === "/"}
+				<h2
+					in:fly={{
+						delay: 300,
+						duration: 1200,
+						x: 0,
+						y: 50,
+						opacity: 0,
+					}}
+					class="font-bold mx-auto text-3xl mt-8"
+				>
+					Check out my work
+					<span class="text-fuchsia-500">!</span>
+				</h2>
+				<div
+					in:fly={{
+						delay: 500,
+						duration: 2000,
+						x: 0,
+						y: 50,
+						opacity: 0,
+					}}
+					class="h-full w-full p-4 rounded-3xl gap-4 grid md:grid-cols-3 grid-cols-1 bg-zinc-900"
+				>
+					{#each Array(3) as _, i}
+						<div class="flex flex-col gap-4">
+							{#each projects as project, j}
+								{#if project.column - 1 === i}
+									<article
+										class="bg-zinc-950 p-4 rounded-2xl flex flex-col gap-3"
+									>
+										{#if project.img.length >= 1}
+											<div class="flex flex-col gap-4">
+												{#each project.img as src, k}
 													<img
-														class="rounded-lg"
-														src={project.icon}
-														alt="project icon"
+														class="bg-white rounded-lg p-2"
+														src="/{src}"
+														alt="{project.title} illustration"
+														loading="lazy"
 													/>
+												{/each}
+											</div>
+										{/if}
+
+										<div class="flex items-center gap-4">
+											<div
+												class="aspect-square h-12 bg-zinc-900 rounded-lg flex justify-center text-center items-center"
+											>
+												{#if project.icon}
+													{#if project.icon.charAt(0) === "/"}
+														<img
+															class="rounded-lg"
+															src={project.icon}
+															alt="project icon"
+															loading="lazy"
+														/>
+													{:else}
+														<Icon
+															width="36"
+															icon={project.icon}
+														></Icon>
+													{/if}
 												{:else}
-													<Icon
-														width="36"
-														icon={project.icon}
-													></Icon>
+													<span
+														class="font-bold text-xl italic font-serif text-fuchsia-300"
+													>
+														{project.name.charAt(0)}
+													</span>
 												{/if}
-											{:else}
-												<span
-													class="font-bold text-xl italic font-serif text-fuchsia-300"
+											</div>
+											<h3 class="font-semibold text-xl">
+												{project.name}
+											</h3>
+										</div>
+										<div class="font-normal text-gray-300">
+											{project.description}
+										</div>
+										<div>
+											{#if project.url}
+												<a
+													target="_blank"
+													href={project.url}
+													class="hover:text-fuchsia-500 underline italic font-bold decoration-fuchsia-500 underline-offset-4"
 												>
-													{project.name.charAt(0)}
-												</span>
+													check it out
+												</a>
 											{/if}
 										</div>
-										<h3 class="font-semibold text-xl">
-											{project.name}
-										</h3>
-									</div>
-									<div class="font-normal text-gray-300">
-										{project.description}
-									</div>
-									<div>
-										{#if project.url}
-											<a
-												target="_blank"
-												href={project.url}
-												class="hover:text-fuchsia-500 underline italic font-bold decoration-fuchsia-500 underline-offset-4"
-											>
-												check it out
-											</a>
-										{/if}
-									</div>
-								</article>
-							{/if}
-						{/each}
-					</div>
-				{/each}
+									</article>
+								{/if}
+							{/each}
+						</div>
+					{/each}
+				</div>
+				<div
+					class="mx-auto font-thin flex justify-center items-center gap-2"
+				>
+					made with Svelte and <span
+						class="font-bold text-fuchsia-500"
+					>
+						<Icon icon="mdi:heart"></Icon>
+					</span>
+				</div>
 			</div>
 		</div>
-	</div>
-	<!-- <article class="w-[min(100%,_45rem)] flex flex-col gap-5">
+
+		<!-- <article class="w-[min(100%,_45rem)] flex flex-col gap-5">
 		<div
 			id="heading"
 			class="flex gap-5 flex-col items-center"
@@ -330,6 +360,7 @@
 			</div>
 		</section>
 	</article> -->
+	{/if}
 </main>
 
 <style lang="postcss">
