@@ -53,7 +53,7 @@
 
 				"microkit_logo_blue.png",
 			],
-			column: 3,
+			column: 2,
 		},
 		{
 			type: "design",
@@ -64,20 +64,7 @@
 			url: "",
 			icon: "",
 			img: ["winfnachten_poster.png"],
-			column: 2,
-		},
-
-		{
-			type: "app",
-			name: "Svelte Gomoku",
-			description:
-				"My starter Svelte project. Simple Gomoku game. Can only be played with 2 players.",
-			show: true,
-			url: "https://gomokusvelte.vercel.app/",
-			icon: "",
-
-			img: [],
-			column: 2,
+			column: 3,
 		},
 		{
 			type: "design",
@@ -88,6 +75,19 @@
 			icon: "/enrol_favicon.png",
 
 			img: ["enrol logo 1.png"],
+			column: 1,
+		},
+
+		{
+			type: "app",
+			name: "Gomoku",
+			description:
+				"My starter Svelte project. Simple Gomoku game. Can only be played with 2 players.",
+			show: true,
+			url: "https://gomokusvelte.vercel.app/",
+			icon: "",
+
+			img: [],
 			column: 1,
 		},
 		// {
@@ -159,7 +159,7 @@
 						y: 50,
 						opacity: 0,
 					}}
-					class=" w-max mx-auto rounded-full p-4 flex flex-wrap justify-center gap-6 md:bg-zinc-900 mt-4"
+					class="self-center rounded-full p-4 flex justify-center flex-wrap gap-6 md:bg-zinc-900 mt-4"
 					style="background-color: 0"
 				>
 					<a
