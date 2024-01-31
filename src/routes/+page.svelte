@@ -51,7 +51,7 @@
 			img: [
 				"microkit_businesscard_mockup.jpg",
 
-				"microkit_logo_blue.png",
+				// "microkit_logo_blue.png",
 			],
 			column: 2,
 		},
@@ -78,18 +78,18 @@
 			column: 1,
 		},
 
-		{
-			type: "app",
-			name: "Gomoku",
-			description:
-				"My starter Svelte project. Simple Gomoku game. Can only be played with 2 players.",
-			show: true,
-			url: "https://gomokusvelte.vercel.app/",
-			icon: "",
+		// {
+		// 	type: "app",
+		// 	name: "Gomoku",
+		// 	description:
+		// 		"My starter Svelte project. Simple Gomoku game. Can only be played with 2 players.",
+		// 	show: true,
+		// 	url: "https://gomokusvelte.vercel.app/",
+		// 	icon: "",
 
-			img: [],
-			column: 3,
-		},
+		// 	img: [],
+		// 	column: 3,
+		// },
 		// {
 		// 	type: "app",
 		// 	name: "Oracle Database Developer",
