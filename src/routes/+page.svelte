@@ -55,17 +55,17 @@
 			],
 			column: 2,
 		},
-		{
-			type: "design",
-			name: "Winfnachten Poster",
-			description:
-				"Poster designed to promote the Christmas party of FS Winf throughout the TUW campus.",
-			show: false,
-			url: "",
-			icon: "",
-			img: ["winfnachten_poster.png"],
-			column: 3,
-		},
+		// {
+		// 	type: "design",
+		// 	name: "Winfnachten Poster",
+		// 	description:
+		// 		"Poster designed to promote the Christmas party of FS Winf throughout the TUW campus.",
+		// 	show: false,
+		// 	url: "",
+		// 	icon: "",
+		// 	img: ["winfnachten_poster.png"],
+		// 	column: 3,
+		// },
 		{
 			type: "design",
 			name: "Enrol Logo",
@@ -88,7 +88,7 @@
 			icon: "",
 
 			img: [],
-			column: 1,
+			column: 3,
 		},
 		// {
 		// 	type: "app",
