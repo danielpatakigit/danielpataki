@@ -6,6 +6,17 @@
 	let projects: any = [
 		{
 			type: "website",
+			name: "Milestone Leavers' Camp",
+			description:
+				"Event website for the 2024 Milestone Leavers' Camp. Made with Sveltekit on the frontend and Pocketbase on the backend. Self-hosted on my own server.",
+			show: true,
+			url: "https://leavers.hu",
+			icon: "/leavers_favicon.png",
+			img: [],
+			column: 1,
+		},
+		{
+			type: "website",
 			name: "Naspolya Photography",
 			description:
 				"Photographer portfolio website made for a relative. Sveltekit as frontend, Planetscale as storage for the dynamic gallery section.",
@@ -13,8 +24,9 @@
 			url: "https://www.naspolyaphoto.hu",
 			icon: "/naspolya_favicon.png",
 			img: [],
-			column: 2,
+			column: 1,
 		},
+
 		{
 			type: "website",
 			name: "Enrol Website",
@@ -37,7 +49,7 @@
 			icon: "/fswinf_favicon.png",
 
 			img: [],
-			column: 1,
+			column: 2,
 		},
 		{
 			type: "design",
@@ -55,17 +67,17 @@
 			],
 			column: 2,
 		},
-		// {
-		// 	type: "design",
-		// 	name: "Winfnachten Poster",
-		// 	description:
-		// 		"Poster designed to promote the Christmas party of FS Winf throughout the TUW campus.",
-		// 	show: false,
-		// 	url: "",
-		// 	icon: "",
-		// 	img: ["winfnachten_poster.png"],
-		// 	column: 3,
-		// },
+		{
+			type: "design",
+			name: "Winfnachten Poster",
+			description:
+				"Poster designed to promote the Christmas party of FS Winf throughout the TUW campus.",
+			show: false,
+			url: "",
+			icon: "",
+			img: ["winfnachten_poster.png"],
+			column: 3,
+		},
 		{
 			type: "design",
 			name: "Enrol Logo",
@@ -75,33 +87,33 @@
 			icon: "/enrol_favicon.png",
 
 			img: ["enrol logo 1.png"],
-			column: 1,
+			column: 3,
 		},
 
-		// {
-		// 	type: "app",
-		// 	name: "Gomoku",
-		// 	description:
-		// 		"My starter Svelte project. Simple Gomoku game. Can only be played with 2 players.",
-		// 	show: true,
-		// 	url: "https://gomokusvelte.vercel.app/",
-		// 	icon: "",
+		{
+			type: "app",
+			name: "Gomoku",
+			description:
+				"My starter Svelte project. Simple Gomoku game. Can only be played with 2 players.",
+			show: true,
+			url: "https://gomokusvelte.vercel.app/",
+			icon: "",
 
-		// 	img: [],
-		// 	column: 3,
-		// },
-		// {
-		// 	type: "app",
-		// 	name: "Oracle Database Developer",
-		// 	description:
-		// 		"My starter JS project. Allows you to easily model a simple database and generate Oracle SQL.",
-		// 	show: false,
-		// 	url: "",
-		// 	icon: "",
+			img: [],
+			column: 2,
+		},
+		{
+			type: "app",
+			name: "Oracle Database Developer",
+			description:
+				"My starter JS project. Allows you to easily model a simple database and generate Oracle SQL.",
+			show: false,
+			url: "",
+			icon: "",
 
-		// 	img: [],
-		// 	column: 1,
-		// },
+			img: [],
+			column: 1,
+		},
 	];
 
 	let ready = false;
@@ -162,6 +174,8 @@
 					class="self-center rounded-full p-4 flex justify-center flex-wrap gap-6 md:bg-zinc-900 mt-4"
 					style="background-color: 0"
 				>
+					<!-- create an open resume in a new tab button here -->
+
 					<a
 						href={Resume}
 						download="Dániel Pataki CV English"
@@ -173,6 +187,17 @@
 						></Icon>
 						<span class="font-semibold">Resume Download</span>
 					</a>
+					<!-- <a
+						href={Resume}
+						download="Dániel Pataki CV English"
+						class="quicklink"
+					>
+						<Icon
+							icon="mdi:resume"
+							width="30"
+						></Icon>
+						<span class="font-semibold">Resume Download</span>
+					</a> -->
 					<a
 						href="https://github.com/danielpatakigit"
 						target="_blank"
@@ -222,7 +247,7 @@
 					{#each Array(3) as _, i}
 						<div class="flex flex-col gap-4">
 							{#each projects as project, j}
-								{#if project.column - 1 === i}
+								{#if project.column - 1 === i && project.show}
 									<article
 										class="bg-zinc-950 p-4 rounded-2xl flex flex-col gap-3"
 									>
@@ -305,76 +330,12 @@
 				</div>
 			</div>
 		</div>
-
-		<!-- <article class="w-[min(100%,_45rem)] flex flex-col gap-5">
-		<div
-			id="heading"
-			class="flex gap-5 flex-col items-center"
-		>
-			<h1 class="text-5xl">Dániel Pataki</h1>
-			<a
-				href={Resume}
-				download="Dániel Pataki CV English"
-				class="bg-white hover:bg-zinc-200 text-black font-bold py-2 px-4 rounded-2xl inline-flex items-center gap-1 transition-all w-min"
-			>
-				<svg
-					class="fill-black w-4 h-4 mr-2"
-					xmlns="http://www.w3.org/2000/svg"
-					viewBox="0 0 20 20"
-				>
-					<path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" />
-				</svg>
-				<span class="text-inherit">Resume</span>
-			</a>
-		</div>
-		<section class=" flex flex-col gap-8 items-center">
-			<h2 class="text-xl mt-4">Some of my work</h2>
-			<div class="flex flex-col gap-8">
-				{#each projects as project, i}
-					<a
-						id="work"
-						href={project.url == ""
-							? "javascript:void(0);"
-							: project.url}
-						target={project.url == "" ? "" : "_blank"}
-						class={project.url == ""
-							? ""
-							: "hover:opacity-70 transition-opacity"}
-					>
-						<h3 class="text-lg inline-flex gap-3 items-center">
-							<span>{project.name}</span>
-							<span
-								class="{project.tag == 'Online'
-									? 'bg-white text-black'
-									: 'bg-zinc-400 text-zinc-800'}
-								text-sm font-sans rounded-full px-2 py-[1px] flex items-center h-min font-medium gap-1"
-							>
-								<span class="text-inherit">{project.tag}</span>
-
-								{#if project.tag == "Online"}
-									<iconify-icon
-										icon="mdi:open-in-new"
-										class="text-inherit"
-									></iconify-icon>
-								{/if}
-							</span>
-						</h3>
-						<p class="font-extralight">{project.description}</p>
-					</a>
-				{/each}
-			</div>
-		</section>
-	</article> -->
 	{/if}
 </main>
 
 <style lang="postcss">
-	* {
-		@apply transition-colors;
-	}
-
 	.quicklink {
-		@apply flex w-max items-center gap-2 rounded-full border px-3 py-1 hover:border-fuchsia-500 hover:text-fuchsia-500;
+		@apply flex w-max items-center gap-2 rounded-full border px-3 py-1 transition-colors hover:border-fuchsia-500 hover:text-fuchsia-500;
 	}
 	.gradient {
 		/* background-image: radial-gradient(
