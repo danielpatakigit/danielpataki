@@ -209,7 +209,7 @@
 						></Icon>
 						<span class="font-semibold">GitHub</span>
 					</a>
-					<a33
+					<a
 						href="https://www.linkedin.com/in/d%C3%A1niel-pataki-55b35124b/"
 						target="_blank"
 						class="quicklink"
